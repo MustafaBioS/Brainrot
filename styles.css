@@ -4,6 +4,7 @@ html, body {
     background-color: black;
     font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
+    user-select: none;
 }
 
 .container {
@@ -53,15 +54,26 @@ html, body {
     transform: translateY(750px);
     transition: all 3s ease;
     animation: float 1.5s ease-in-out infinite;
+    user-select: none;
 }
 
-.troll.anim, .hands.anim, .num.anim {
+.troll.anim, .hands.anim, .num.anim, .right.anim {
     opacity: 1;
     transform: translateY(0px);
 }
 
 .num.anim {
-    transform: translateY(-225px);
+    transform: translateY(-100px);
+}
+
+.six {
+    margin-right: 500px;
+    animation: num 0.5s ease-in-out infinite;
+}
+
+.seven {
+    margin-left: 600px;
+    animation: num 0.5s ease-in-out infinite;
 }
 
 .hands {
@@ -70,25 +82,36 @@ html, body {
     justify-content: center;
     position: absolute;
     flex-direction: row;
-    gap: 175px;
-    margin-top: 300px;
+    gap: 300px;
     opacity: 0;
     transform: translateY(750px);
     transition: all 3s ease;
 }
 
 .left, .right {
-    display: flex;
-    justify-content: center;
-    height: 150px;
-    width: 325px;
-    background-color: yellow;
     border-radius: 50px;
+    position: absolute;
+}
+
+.left.bounce {
+    animation: l67 0.5s ease-in-out infinite;
+}
+
+.left {
+    transform: translate(-320px, 0px) scaleX(-1);
+}
+
+.right.bounce {
     animation: n67 0.5s ease-in-out infinite;
+    animation-delay: 0.25s;
+}
+
+.seven {
+    animation-delay: 0.25s;
 }
 
 .right {
-    animation-delay: 0.25s;
+    margin-left: 650px;
 }
 
 .num {
@@ -97,6 +120,27 @@ html, body {
     opacity: 0;
     transform: translateY(750px);
     transition: all 3s ease;
+    user-select: none;
+}
+
+.rightDiv, .leftDiv {
+    position: absolute;
+}
+
+.leftDiv {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightDiv {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes float {
@@ -107,6 +151,18 @@ html, body {
 
 @keyframes n67 {
     0% {transform: translateY(0);}
-    50% {transform: translateY(-20px);}
+    50% {transform: translateY(-50px);}
     100% {transform: translateY(0);}
+}
+
+@keyframes l67 {
+    0% {transform: translate(-320px, 0px) scaleX(-1);}
+    50% {transform: translate(-320px,-50px) scaleX(-1);}
+    100% {transform: translate(-320px,-0px) scaleX(-1);}
+}
+
+@keyframes num {
+    0% {margin-bottom: 0px;}
+    50% {margin-bottom: 75px;}
+    100% {margin-bottom: 0px;}
 }

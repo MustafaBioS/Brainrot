@@ -4,6 +4,17 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const troll = document.querySelector(".troll");
     const hands = document.querySelector('.hands');
     const num = document.querySelectorAll('.num');
+    const left = document.querySelector('.left');
+    const right = document.querySelector('.right');
+
+    const audio = document.querySelector(".audio");
+
+    if (audio) {
+        audio.play().catch(() => {
+            document.addEventListener("click", () => audio.play());
+        });
+    }
+
 
     if (btn1 || btn2) {
         btn1.addEventListener('click', ()=> {
@@ -18,7 +29,15 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     troll.classList.add("anim");
     hands.classList.add("anim");
+    left.classList.add("anim");
+    right.classList.add("anim");
     num.forEach(number => {
         number.classList.add("anim");
     });
+
+    setTimeout(() => {
+        left.classList.add('bounce');
+        right.classList.add('bounce');
+    }, 3000);
+
 });
